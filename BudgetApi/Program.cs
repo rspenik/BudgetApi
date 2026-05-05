@@ -1,3 +1,4 @@
+using BudgetApi.Infrastructure.Persistence;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);

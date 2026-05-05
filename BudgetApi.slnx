@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="BudgetApi.csproj" />
+  <Project Path="BudgetApi.Core/BudgetApi.Core.csproj" />
+  <Project Path="BudgetApi/BudgetApi.csproj" />
+  <Project Path="BudgetApi.Infrastructure/BudgetApi.Infrastructure.csproj" />
+  <Project Path="BudgetApi.Models/BudgetApi.Models.csproj" />
 </Solution>
