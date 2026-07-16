@@ -62,6 +62,30 @@ namespace BudgetApi.Infrastructure.Tests.Repositories
         }
 
         [Fact]
+        public async Task GetByUsernameAsync_ExistingUsername_ReturnsUser()
+        {
+            await using var context = CreateContext();
+            var repository = new UserRepository(context);
+            await repository.CreateAsync(CreateUser());
+
+            var found = await repository.GetByUsernameAsync("jdoe");
+
+            Assert.NotNull(found);
+            Assert.Equal("jdoe", found!.Username);
+        }
+
+        [Fact]
+        public async Task GetByUsernameAsync_UnknownUsername_ReturnsNull()
+        {
+            await using var context = CreateContext();
+            var repository = new UserRepository(context);
+
+            var found = await repository.GetByUsernameAsync("ghost");
+
+            Assert.Null(found);
+        }
+
+        [Fact]
         public async Task GetAllAsync_ReturnsAllUsers()
         {
             await using var context = CreateContext();
