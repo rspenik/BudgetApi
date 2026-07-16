@@ -1,13 +1,16 @@
 using BudgetApi.Core.DTOs.User;
 using BudgetApi.Core.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetApi.Controllers
 {
     [Route("api/user")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
+        // TODO: no ownership check yet — any authenticated user can read/edit/delete any other user's record by id.
         private readonly IUserService _userService;
 
         public UserController(IUserService userService)
@@ -30,6 +33,7 @@ namespace BudgetApi.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Create(CreateUserDto dto)
         {
             var created = await _userService.CreateAsync(dto);

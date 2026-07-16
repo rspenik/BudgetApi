@@ -1,13 +1,16 @@
 using BudgetApi.Core.DTOs.Account;
 using BudgetApi.Core.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetApi.Controllers
 {
     [Route("api/account")]
     [ApiController]
+    [Authorize]
     public class AccountController : ControllerBase
     {
+        // TODO: no ownership check yet — any authenticated user can read/edit/delete any other user's account by id.
         private readonly IAccountService _accountService;
 
         public AccountController(IAccountService accountService)
