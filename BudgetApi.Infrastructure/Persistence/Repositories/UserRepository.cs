@@ -18,6 +18,11 @@ namespace BudgetApi.Infrastructure.Persistence.Repositories
             return await _context.BudgetUsers.FindAsync(id);
         }
 
+        public async Task<BudgetUser?> GetByUsernameAsync(string username)
+        {
+            return await _context.BudgetUsers.FirstOrDefaultAsync(u => u.Username == username);
+        }
+
         public async Task<IEnumerable<BudgetUser>> GetAllAsync()
         {
             return await _context.BudgetUsers.ToListAsync();
