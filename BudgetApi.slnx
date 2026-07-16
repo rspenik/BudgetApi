@@ -1,3 +1,11 @@
 <Solution>
-  <Project Path="BudgetApi.csproj" />
+  <Folder Name="/tests/">
+    <Project Path="tests/BudgetApi.Core.Tests/BudgetApi.Core.Tests.csproj" />
+    <Project Path="tests/BudgetApi.Infrastructure.Tests/BudgetApi.Infrastructure.Tests.csproj" />
+    <Project Path="tests/BudgetApi.Tests/BudgetApi.Tests.csproj" />
+  </Folder>
+  <Project Path="BudgetApi.Core/BudgetApi.Core.csproj" />
+  <Project Path="BudgetApi/BudgetApi.csproj" />
+  <Project Path="BudgetApi.Infrastructure/BudgetApi.Infrastructure.csproj" />
+  <Project Path="BudgetApi.Models/BudgetApi.Models.csproj" />
 </Solution>
