@@ -1,0 +1,58 @@
+using BudgetApi.Core.DTOs.User;
+using BudgetApi.Core.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace BudgetApi.Controllers
+{
+    [Route("api/user")]
+    [ApiController]
+    public class UserController : ControllerBase
+    {
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var users = await _userService.GetAllAsync();
+            return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var user = await _userService.GetByIdAsync(id);
+            return user is null ? NotFound() : Ok(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateUserDto dto)
+        {
+            var created = await _userService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, UserDto dto)
+        {
+            if (id != dto.Id)
+            {
+                return BadRequest();
+            }
+
+            var updated = await _userService.UpdateAsync(dto);
+            return updated ? NoContent() : NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _userService.DeleteAsync(id);
+            return NoContent();
+        }
+    }
+}

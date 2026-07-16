@@ -12,13 +12,16 @@
     <Folder Include="DTOs\Account\" />
     <Folder Include="DTOs\Transaction\" />
     <Folder Include="DTOs\User\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Mapping\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BudgetApi.Models\BudgetApi.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
   </ItemGroup>
 
 </Project>
