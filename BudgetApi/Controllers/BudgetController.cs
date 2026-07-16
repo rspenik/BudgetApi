@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/budget")]
     [ApiController]
     public class BudgetController : ControllerBase
     {
